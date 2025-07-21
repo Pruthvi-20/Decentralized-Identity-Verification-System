@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decentralized Identity</title>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        .section { margin: 20px; }
+        input, button { padding: 10px; margin: 5px; }
+        #qr img { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Decentralized Identity Verification</h1>
+
+    <div class="section">
+        <h2>Register Identity</h2>
+        <input id="reg_data" type="text" placeholder="Name + ID (e.g., JohnDoe12345)">
+        <input id="reg_address" type="text" placeholder="Ethereum Address">
+        <button onclick="register()">Register</button>
+        <p id="reg_result"></p>
+    </div>
+
+    <div class="section">
+        <h2>Sign Credential</h2>
+        <input id="sign_data" type="text" placeholder="User Data">
+        <input id="sign_address" type="text" placeholder="Ethereum Address">
+        <button onclick="sign()">Sign</button>
+        <p id="sign_result"></p>
+    </div>
+
+    <div class="section">
+        <h2>Verify Credential</h2>
+        <input id="verify_data" type="text" placeholder="User Data">
+        <input id="verify_address" type="text" placeholder="Ethereum Address">
+        <input id="verify_signature" type="text" placeholder="Signature">
+        <button onclick="verify()">Verify</button>
+        <p id="verify_result"></p>
+    </div>
+
+    <div class="section">
+        <h2>Generate QR Code</h2>
+        <input id="qr_data" type="text" placeholder="User Data">
+        <input id="qr_address" type="text" placeholder="Ethereum Address">
+        <button onclick="generateQR()">Generate QR</button>
+        <div id="qr"></div>
+    </div>
+
+    <script>
+        async function register() {
+            const userData = document.getElementById('reg_data').value;
+            const address = document.getElementById('reg_address').value;
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_data: userData, address })
+            });
+            const result = await response.json();
+            document.getElementById('reg_result').innerText = JSON.stringify(result);
+        }
+
+        async function sign() {
+            const userData = document.getElementById('sign_data').value;
+            const address = document.getElementById('sign_address').value;
+            const response = await fetch('/sign', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_data: userData, address })
+            });
+            const result = await response.json();
+            document.getElementById('sign_result').innerText = JSON.stringify(result);
+        }
+
+        async function verify() {
+            const userData = document.getElementById('verify_data').value;
+            const address = document.getElementById('verify_address').value;
+            const signature = document.getElementById('verify_signature').value;
+            const response = await fetch('/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_data: userData, address, signature })
+            });
+            const result = await response.json();
+            document.getElementById('verify_result').innerText = JSON.stringify(result);
+        }
+
+        async function generateQR() {
+            const userData = document.getElementById('qr_data').value;
+            const address = document.getElementById('qr_address').value;
+            const response = await fetch('/generate_qr', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_data: userData, address })
+            });
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            document.getElementById('qr').innerHTML = `<img src="${url}" alt="QR Code">`;
+        }
+    </script>
+</body>
+</html>
