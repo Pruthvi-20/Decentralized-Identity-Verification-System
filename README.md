@@ -1,28 +1,28 @@
 # 🔐 Decentralized Identity Verification System
 
-This project is a decentralized identity verification platform that uses blockchain (Solidity smart contracts), Flask (Python backend), and cryptographic methods to provide a tamper-proof identity system.
+A Django-based decentralized identity verification platform that integrates biometric authentication, blockchain (Solidity smart contracts), digital signatures, and QR code generation to securely register and verify identities.
 
 ---
 
 ## 🌟 Features
 
-- ✅ Identity registration on blockchain
-- 🧠 Biometric authentication simulation
-- ✍️ Data signing with private keys
-- 🔍 Identity verification with signature and blockchain hash
-- 📷 QR code generation for signed identities
-- 🖥️ CLI support for testing and automation
+- ✅ Identity registration on the Ethereum blockchain
+- 🧠 Simulated biometric authentication
+- ✍️ Data signing and verification using ECC
+- 📷 QR code generation for signed identity packets
+- 📦 Web + CLI support using Django views and HTTP requests
 
 ---
 
 ## 🧱 Tech Stack
 
-| Component     | Technology                        |
-|---------------|-----------------------------------|
-| Smart Contract| Solidity (on Ganache or local EVM)|
-| Backend       | Python (Flask)                    |
-| Frontend (API)| JSON + QR Code                    |
-| Crypto        | ECC, SHA-256, Signature verification |
-| Tools         | Web3.py, pycryptodome, qrcode     |
+| Layer          | Tech                                  |
+|----------------|---------------------------------------|
+| Backend        | Django (Python)                       |
+| Smart Contract | Solidity (on Ganache or Remix)        |
+| Web3 Bridge    | Web3.py                               |
+| Crypto Layer   | ECC (pycryptodome), SHA-256           |
+| QR Generator   | qrcode                                |
+| Database       | SQLite or MySQL (Django ORM)          |
 
 ---
