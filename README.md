@@ -1,2 +1,28 @@
-# Decentralized-Identity-Verification-System
-A blockchain-based decentralized identity verification system using Solidity, Flask, and cryptographic authentication. It integrates biometric checks, QR code generation, and digital signatures to ensure secure and verifiable identity management.
+# 🔐 Decentralized Identity Verification System
+
+This project is a decentralized identity verification platform that uses blockchain (Solidity smart contracts), Flask (Python backend), and cryptographic methods to provide a tamper-proof identity system.
+
+---
+
+## 🌟 Features
+
+- ✅ Identity registration on blockchain
+- 🧠 Biometric authentication simulation
+- ✍️ Data signing with private keys
+- 🔍 Identity verification with signature and blockchain hash
+- 📷 QR code generation for signed identities
+- 🖥️ CLI support for testing and automation
+
+---
+
+## 🧱 Tech Stack
+
+| Component     | Technology                        |
+|---------------|-----------------------------------|
+| Smart Contract| Solidity (on Ganache or local EVM)|
+| Backend       | Python (Flask)                    |
+| Frontend (API)| JSON + QR Code                    |
+| Crypto        | ECC, SHA-256, Signature verification |
+| Tools         | Web3.py, pycryptodome, qrcode     |
+
+---
